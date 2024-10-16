@@ -10,15 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit{
 
-  constructor(private ProdService: ProductServiceService){}
+  constructor(private ProdSvc: ProductServiceService){}
 
   prods: iProd[] = [];
   preferiti:iProd[] =[];
 
   pref(id:number){
-    this.ProdService.getProdById(id).subscribe(
+    this.ProdSvc.getProdById(id).subscribe(
       (prod:iProd) => {
-        this.ProdService.addPref(prod)
+        if(!(this.preferiti.some(product => product.id === id))){
+          this.ProdSvc.addPref(prod)
+        }
       }
     )
   }
@@ -27,14 +29,15 @@ export class HomeComponent implements OnInit{
 
  ngOnInit(): void {
 
-  this.ProdService.getAllproducts().subscribe(
+  this.ProdSvc.getAllproducts().subscribe(
     (prodotti:any) => {
       this.prods = prodotti.products;
       console.log(this.prods)
     }
   )
 
-  this.preferiti = this.ProdService.getPref()
+  this.preferiti = this.ProdSvc.getPref()
+  console.log(this.preferiti)
  }
 
 }
