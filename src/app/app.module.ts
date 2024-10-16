@@ -9,6 +9,7 @@ import { ProductCardComponent } from './components/product-card/product-card.com
 import { PreferitiPageComponent } from './components/preferiti-page/preferiti-page.component';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { HttpClient, provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,9 +23,12 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+
   ],
-  providers: [],
+  providers: [
+    provideHttpClient(),
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
