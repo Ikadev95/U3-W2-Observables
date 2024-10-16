@@ -14,19 +14,26 @@ export class HomeComponent implements OnInit{
 
   prods: iProd[] = [];
   preferiti:iProd[] =[];
-
+  cart: iProd[] =[];
 
  ngOnInit(): void {
 
   this.ProdSvc.getAllproducts().subscribe(
-    (prodotti:any) => {
+    (prodotti:iObj) => {
       this.prods = prodotti.products;
-      console.log(this.prods)
+
     }
   )
 
   this.preferiti = this.ProdSvc.getPref()
   console.log(this.preferiti)
+
+  this.ProdSvc.cart$.subscribe(prod => this.cart.push(prod))
+  console.log(this.cart);
+
+
  }
+
+
 
 }

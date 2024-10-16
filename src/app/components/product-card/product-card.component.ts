@@ -25,10 +25,14 @@ export class ProductCardComponent implements OnInit {
     )
   }
 
+  addToCart(prod:iProd){
+    this.ProdSvc.addToCart(prod)
+  }
+
   ngOnInit(): void {
 
     this.preferiti = this.ProdSvc.getPref()
-    console.log(this.preferiti)
+
    }
 
 }

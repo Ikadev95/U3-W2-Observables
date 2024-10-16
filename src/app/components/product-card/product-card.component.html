@@ -1,9 +1,10 @@
 <div class="card">
-  <img src="{{prod.images[0]}}" class="card-img-top" alt="immagine prodotto">
+  <img [src]="prod.thumbnail" class="card-img-top" [alt]="prod.title">
   <div class="card-body">
     <h5 class="card-title">{{prod.title}}</h5>
     <p class="card-text">{{prod.description}}</p>
-    <a class="btn btn-primary me-2">detail</a>
-    <a class="btn btn-outline-danger" (click)="pref(prod.id)">add  ❤️</a>
+    <button class="btn btn-primary me-2">detail</button>
+    <button class="btn btn-outline-danger me-2" (click)="pref(prod.id)">add  ❤️</button>
+    <button class="btn btn-primary" (click)="addToCart(prod)">carrello</button>
   </div>
 </div>
