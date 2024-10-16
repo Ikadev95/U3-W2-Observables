@@ -1,16 +1,17 @@
 <main class="pt-4">
 
   <div class="container">
-    <p>home works!</p>
-    <div class="row">
-      <div class="col-12 col-md-4" *ngFor="let prod of prods">
+    <h1>Ikazon</h1>
+    <h2>prodotti ❤️: {{preferiti.length}}</h2>
+    <div class="row row-gap-4">
+      <div class="col-12 col-md-4 col-lg-3" *ngFor="let prod of prods">
         <div class="card">
           <img src="{{prod.images[0]}}" class="card-img-top" alt="immagine prodotto">
           <div class="card-body">
             <h5 class="card-title">{{prod.title}}</h5>
             <p class="card-text">{{prod.description}}</p>
-            <a href="#" class="btn btn-primary me-2">detail</a>
-            <a href="#" class="btn btn-outline-danger">add  ❤️</a>
+            <a class="btn btn-primary me-2">detail</a>
+            <a class="btn btn-outline-danger" (click)="pref(prod.id)">add  ❤️</a>
           </div>
         </div>
       </div>

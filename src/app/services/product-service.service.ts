@@ -8,6 +8,7 @@ import { iProd } from '../interfaces/i-prod';
 export class ProductServiceService {
 
   apiUrl:string = 'https://dummyjson.com/products'
+  pref:iProd[] = []
 
   constructor(
     private http:HttpClient
@@ -15,5 +16,14 @@ export class ProductServiceService {
 
   getAllproducts(){
     return this.http.get<iProd[]>(this.apiUrl)
+  }
+  getProdById(id:number){
+    return this.http.get<iProd>(`${this.apiUrl}/${id}`)
+  }
+  getPref(){
+    return this.pref
+  }
+  addPref(prod:iProd){
+    this.pref.push(prod);
   }
 }

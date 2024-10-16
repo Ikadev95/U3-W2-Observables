@@ -1,5 +1,5 @@
+import { iProd } from './../../interfaces/i-prod';
 import { iObj } from '../../interfaces/i-obj';
-import { iProd } from '../../interfaces/i-prod';
 import { ProductServiceService } from './../../services/product-service.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,14 +9,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit{
+
+  constructor(private ProdService: ProductServiceService){}
+
   prods: iProd[] = [];
- constructor(private ProdService: ProductServiceService){}
+  preferiti:iProd[] =[];
+
+  pref(id:number){
+    this.ProdService.getProdById(id).subscribe(
+      (prod:iProd) => {
+        this.ProdService.addPref(prod)
+      }
+    )
+  }
+
+
+
  ngOnInit(): void {
+
   this.ProdService.getAllproducts().subscribe(
     (prodotti:any) => {
       this.prods = prodotti.products;
       console.log(this.prods)
     }
   )
+
+  this.preferiti = this.ProdService.getPref()
  }
+
 }
