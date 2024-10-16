@@ -1,8 +1,9 @@
 <div class="card">
-  <img src="..." class="card-img-top" alt="...">
+  <img src="{{prod.images[0]}}" class="card-img-top" alt="immagine prodotto">
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <h5 class="card-title">{{prod.title}}</h5>
+    <p class="card-text">{{prod.description}}</p>
+    <a class="btn btn-primary me-2">detail</a>
+    <a class="btn btn-outline-danger" (click)="pref(prod.id)">add  ❤️</a>
   </div>
 </div>

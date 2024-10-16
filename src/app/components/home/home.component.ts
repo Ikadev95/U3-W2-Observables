@@ -15,17 +15,6 @@ export class HomeComponent implements OnInit{
   prods: iProd[] = [];
   preferiti:iProd[] =[];
 
-  pref(id:number){
-    this.ProdSvc.getProdById(id).subscribe(
-      (prod:iProd) => {
-        if(!(this.preferiti.some(product => product.id === id))){
-          this.ProdSvc.addPref(prod)
-        }
-      }
-    )
-  }
-
-
 
  ngOnInit(): void {
 
