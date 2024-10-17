@@ -14,7 +14,6 @@ export class HomeComponent implements OnInit{
 
   prods: iProd[] = [];
   preferiti:iProd[] =[];
-  cart: iProd[] =[];
 
  ngOnInit(): void {
 
@@ -27,10 +26,6 @@ export class HomeComponent implements OnInit{
 
   this.preferiti = this.ProdSvc.getPref()
   console.log(this.preferiti)
-
-  this.ProdSvc.cart$.subscribe(prod => this.cart.push(prod))
-  console.log(this.cart);
-
 
  }
 
