@@ -15,23 +15,14 @@ export class ProductCardComponent implements OnInit {
 
   preferiti:iProd[] =[];
 
-  pref(id:number){
-    this.ProdSvc.getProdById(id).subscribe(
-      (prod:iProd) => {
-        if(!(this.preferiti.some(product => product.id === id))){
-          this.ProdSvc.addPref(prod)
-        }
-      }
-    )
-  }
-
   addToCart(prod:iProd){
     this.ProdSvc.addToCart(prod)
   }
+  addToPref(prod:iProd){
+    this.ProdSvc.addPref(prod)
+    }
 
   ngOnInit(): void {
-
-    this.preferiti = this.ProdSvc.getPref()
 
    }
 

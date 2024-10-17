@@ -24,7 +24,9 @@ export class HomeComponent implements OnInit{
     }
   )
 
-  this.preferiti = this.ProdSvc.getPref()
+  this.ProdSvc.pref$.subscribe( el => {
+    if(!(this.preferiti.some(product => product.id === el.id)))
+    this.preferiti.push(el)})
   console.log(this.preferiti)
 
  }

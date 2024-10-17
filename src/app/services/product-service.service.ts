@@ -9,27 +9,25 @@ import { iObj } from '../interfaces/i-obj';
 })
 export class ProductServiceService {
 
-  apiUrl:string = 'https://dummyjson.com/products'
-  pref:iProd[] = []
+  apiUrl: string = 'https://dummyjson.com/products'
   cart$ = new Subject<iProd>()
+  pref$ = new ReplaySubject<iProd>()
 
-  constructor(
-    private http:HttpClient
-  ) { }
+  constructor(private http: HttpClient) { }
 
   getAllproducts(){
     return this.http.get<iObj>(this.apiUrl)
   }
-  getProdById(id:number){
+
+  getProdById(id: number){
     return this.http.get<iProd>(`${this.apiUrl}/${id}`)
   }
-  getPref(){
-    return this.pref
+
+  addPref(prod: iProd){
+    this.pref$.next(prod);
   }
-  addPref(prod:iProd){
-    this.pref.push(prod);
-  }
-  addToCart(prod:iProd){
+
+  addToCart(prod: iProd){
     this.cart$.next(prod);
   }
 }
